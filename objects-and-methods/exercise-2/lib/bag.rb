@@ -5,6 +5,7 @@ class Bag
     @empty = true
     @count = 0
     @candies = []
+    @removed = []
   end
 
   def empty?
@@ -31,6 +32,11 @@ class Bag
   end
 
   def take(num)
-    num.times { @candies.pop }
+    num.times do |n|
+      @count -= 1
+      @removed << @candies.pop
+      @empty = true if @count == 0
+    end
+    @removed
   end
 end
