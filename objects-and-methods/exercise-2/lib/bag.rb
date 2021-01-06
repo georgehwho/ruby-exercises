@@ -31,7 +31,6 @@ class Bag
   end
 
   def take(num)
-    @count -= num
-    num.times "e"
+    num.times { @candies.pop }
   end
 end
