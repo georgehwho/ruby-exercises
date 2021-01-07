@@ -18,43 +18,63 @@ class AnyPatternTest < Minitest::Test
     has_zero = false
     numbers.each do |number|
       # Your code goes here
+      has_zero = true if number.zero?
     end
     assert_equal false, has_zero
   end
 
   def test_has_at_least_one_alice
-    skip
+    # skip
     names = ["Bill", "Bob", "Burton", "Alice", "Brandon"]
     has_alice = false
     # Your code goes here
+    names.each do |name|
+      has_alice = true if name.downcase == 'alice'
+    end
     assert_equal true, has_alice
   end
 
   def test_no_alices
-    skip
+    # skip
     names = ["Chuck", "Charlene", "Cory", "Chris", "Carl"]
     # Your code goes here
+    has_alice = false
+    names.each do |name|
+      has_alice = true if name.downcase == 'alice'
+    end
     assert_equal false, has_alice
   end
 
   def test_has_a_multi_word_phrase
-    skip
+    # skip
     phrases = ["Sure!", "OK.", "I have no idea.", "Really?Whatever."]
     # Your code goes here
+    has_multi_word_phrase = false
+    phrases.each do |x|
+      has_multi_word_phrase = true if x.include? ' '
+    end
     assert_equal true, has_multi_word_phrase
   end
 
   def test_no_monkeys
-    skip
+    # skip
     animals = ["elephant", "hippo", "jaguar", "python"]
     # Your code goes here
+    has_monkeys = false
+    animals.each do |animal|
+      has_monkeys = true if animal == 'monkey'
+    end
     assert_equal false, has_monkeys
   end
 
   def test_no_multiples_of_five
-    skip
+    # skip
     numbers = [3, 1, 3, 2, 4, 9, 8]
     # Your code goes here
+    multiples_of_5 = false
+    numbers.each do |num|
+      multiples_of_5 = true if num % 5 == 0
+    end 
     assert_equal false, multiples_of_5
   end
 
