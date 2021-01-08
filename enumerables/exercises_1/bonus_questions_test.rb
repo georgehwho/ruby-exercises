@@ -14,12 +14,13 @@ class BonusQuestionsTest < Minitest::Test
     numbers = [1, 2, 3, 4, 5, 6, 7]
     numbers.each do |number|
       # write code here
+      product *= number
     end
     assert_equal 5040, product
   end
 
   def test_first_roving_gnome
-    skip
+    # skip
     gnome1 = Gnome.new('forest')
     gnome2 = Gnome.new('roving')
     gnome3 = Gnome.new('snorkeling')
@@ -29,20 +30,22 @@ class BonusQuestionsTest < Minitest::Test
     gnomes = [gnome1, gnome2, gnome3, gnome4, gnome5]
 
     # write code here
+    found = gnomes.find { |g| g.roving? }
 
     assert_equal gnome2, found
   end
 
   def test_sum_of_factorials
-    skip
+    # skip
     sum_of_factorials = 0
     numbers = [1, 2, 3, 4, 5]
     # write code here
+    sum_of_factorials = numbers.reduce(0) { |memo, num| memo += (1..num).reduce(1) { |memo, n| memo *= n } }
     assert_equal 153, sum_of_factorials
   end
 
   def test_first_giant_squid
-    skip
+    # skip
     squid1 = Squid.new('tiny')
     squid2 = Squid.new('inky')
     squid3 = Squid.new('giant')
@@ -52,20 +55,22 @@ class BonusQuestionsTest < Minitest::Test
     squiddies = [squid1, squid2, squid3, squid4, squid5]
 
     # write code here
+    found = squiddies.find { |s| s.giant? }
 
     assert_equal squid3, found
   end
 
   def test_max_value
-    skip
+    # skip
     max_num = 0
     numbers = [2, 16, 6, 50, 12]
     # write code here
+    max_num = numbers.sort.last
     assert_equal 50, max_num
   end
 
   def test_first_weird_thing_using_find
-    skip
+    # skip
     thing1 = Thing.new('odd')
     thing2 = Thing.new('cool')
     thing3 = Thing.new('weird')
@@ -75,12 +80,13 @@ class BonusQuestionsTest < Minitest::Test
     things = [thing1, thing2, thing3, thing4, thing5]
 
     # write code here
+    found = things.find { |t| t.weird? }
 
     assert_equal thing3, found
   end
 
   def test_first_pink_unicorn
-    skip
+    # skip
     unicorn1 = Unicorn.new('white')
     unicorn2 = Unicorn.new('sparkly')
     unicorn3 = Unicorn.new('purple')
@@ -90,6 +96,7 @@ class BonusQuestionsTest < Minitest::Test
     unicorns = [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5]
 
     # write code here
+    found = unicorns.find { |u| u.pink? }
 
     assert_equal unicorn4, found
   end
