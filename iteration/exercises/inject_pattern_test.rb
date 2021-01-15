@@ -39,6 +39,7 @@ class InjectPatternTest < Minitest::Test
     product = 1
     numbers.each do |number|
       # Your Code Here
+      product *= number
     end
     assert_equal 210, product
   end
@@ -55,6 +56,7 @@ class InjectPatternTest < Minitest::Test
     product = 1
     scrabble_score.each do |(key, value)|
       # Your Code Here
+      product *= value
     end
     assert_equal 138, product
   end
@@ -67,6 +69,9 @@ class InjectPatternTest < Minitest::Test
 
     number_of_letters = {}
     # Your Code Here
+    airlines.each do |a|
+      number_of_letters[a] = a.size
+    end
 
     expected = {
       "Southwest" => 9,
@@ -90,6 +95,9 @@ class InjectPatternTest < Minitest::Test
 
     toppings = []
     # Your Code Here
+    topping_calories.each do |k, v|
+      toppings << k.to_s
+    end
 
     assert_equal ["pepperoni", "sausage", "olives", "peppers", "onions"], toppings
   end
@@ -100,6 +108,10 @@ class InjectPatternTest < Minitest::Test
     # to find the sum of all the integers
 
     # Your Code Here
+    sum_of_second_values = 0
+    elements.each do |e|
+      sum_of_second_values += e[1]
+    end
 
     assert_equal 31, sum_of_second_values
 
@@ -133,11 +145,16 @@ class InjectPatternTest < Minitest::Test
     # calorie count by the quantity
 
     # Your Code Here
+    total_calories = 0
+    toppings.each do |k, v|
+      total_calories += toppings[k][:calories] * toppings[k][:quantity]
+    end
 
     assert_equal 6950, total_calories
   end
 
   def test_9
+    # skip
     grades = {
       quizzes: [8, 5, 3, 6, 5],
       tests: [23, 21, 24],
@@ -150,11 +167,16 @@ class InjectPatternTest < Minitest::Test
     # summing all of the averages
 
     # Your code goes here
+    final_grade = 0.0
+    grades.each do |k, v|
+      final_grade += v.reduce(:+) / v.size.to_f
+    end
 
     assert_equal 85.40, final_grade
   end
 
   def test_10
+    # skip
     menu = {
       empanadas: {
         flavors: ["chicken", "potato", "steak", "veggie"],
@@ -174,6 +196,27 @@ class InjectPatternTest < Minitest::Test
     # version of the menu
 
     # Your Code Here
+    printable_menu = "Menu:\n"
+    menu.each do |k, v|
+      printable_menu << '- '
+
+      menu[k][:flavors].each do |flavor|
+        if menu[k][:flavors].index(flavor) < menu[k][:flavors].size - 1
+          printable_menu << flavor + ', '
+        else
+          printable_menu << 'and ' + flavor + ' '
+        end
+      end
+
+      printable_menu << k.to_s
+
+      if menu[k][:gluten_free] == true
+        printable_menu << " (gluten free)\n"
+      else
+        printable_menu << " (non gluten free)\n"
+      end
+    end
+
 
     expected =  "Menu:\n"\
                 "- chicken, potato, steak, and veggie empanadas (non gluten free)\n"\
