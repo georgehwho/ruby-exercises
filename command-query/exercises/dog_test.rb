@@ -10,7 +10,7 @@ class DogTest < Minitest::Test
   end
 
   def test_dog_eats
-    skip
+    # skip
     dog = Dog.new
     dog.eat
     assert_equal false, dog.hungry?, "Dog ate. Not hungry."
